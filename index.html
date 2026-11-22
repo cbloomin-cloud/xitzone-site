@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Xitzone website — V.5 -->
+<!-- Xitzone website — V.6 -->
 <title>Xitzone | Online Balance Coaching with Caydrick</title>
 <meta name="description" content="Exit the comfort zone. Online coaching for balance in mind, body and emotion with Caydrick, an All-American athlete and lululemon ambassador.">
 <meta property="og:title" content="Xitzone | Exit the comfort zone. Find your balance.">
@@ -489,7 +489,7 @@
     </div>
     <div class="legal">
       <p>Xitzone LLC provides educational coaching and wellness services, not medical or mental-health treatment. Talk to your doctor before starting a new program. Individual results will vary.</p>
-      <p>© <span id="yr">2026</span> Xitzone LLC. All rights reserved. · V.5</p>
+      <p>© <span id="yr">2026</span> Xitzone LLC. All rights reserved. · V.6</p>
     </div>
   </div>
 </footer>
@@ -512,8 +512,8 @@
 <!-- KETTLEBELL BUDDIES (cursor held still):
      2s  a kettlebell or weight plate (50/50) walks up and punches the cursor
      10s the other one shows up and they fight
-     then a double knockout; one gets up (50% of the time it first tags the page with sharpies, or vandalizes
-     a photo of a person if one is on screen),
+     then a double knockout; one gets up and grabs a sharpie: he vandalizes a photo of a person if one is on screen,
+     otherwise he tags the page with random graffiti. Then he
      punches the letters off the page and cracks the screen, until the whole page collapses.
      Any mouse move, scroll, click or key rebuilds everything.
      On phones and tablets the "cursor" is the middle of the screen, and any touch or scroll counts as movement. -->
@@ -693,10 +693,10 @@
     later(()=>{pow(L+130,y+HY-20,0,'K.O.!',true); shake(12); fall(left); fall(right)},100);
     winner=Math.random()<.5?left:right; loser=winner===left?right:left;
     later(()=>getUp(winner),2200);
-    later(()=>Math.random()<.5?prank():rampage(),2900); // 50%: sharpie time first
+    later(prank,2900); // sharpie time, every time
   }
 
-  // ---- Act 3.5 (50%): the winner tags the page with sharpies ----
+  // ---- Act 3.5: the winner tags the page with sharpies ----
   // If a photo of a person is on screen, he vandalizes the photo instead.
   // Photos opt in with data-face="eyeX,eyeY,faceWidth" (fractions of the photo's natural size).
   let graffiti=null;
@@ -737,15 +737,46 @@
     m.push({c:'#ff5fd2',text:'LOL',x:f.x+f.w*.85,y:f.y-f.w*.55,size:Math.max(24,Math.min(70,f.w*.4)),rot:-12});
     return m;
   }
+  // No face on screen: random graffiti all over the page, different every time
+  const pick=a=>a[Math.floor(Math.random()*a.length)];
+  const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+  const STAR=(()=>{let d='';for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,r=i%2?.42:1;d+=(i?'L':'M')+(Math.cos(a)*r).toFixed(2)+' '+(Math.sin(a)*r).toFixed(2)}return d+'z'})();
+  const DOODLE=[
+    'M-1 .4l.3-1 .7 .6.7-.6.3 1z',                                                       // crown
+    'M-1 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0M-.35-.3v.12M.35-.3v.12M-.5 .2q.5 .45 1 0',          // smiley
+    'M0 .8C-1.2 0-1-.9-.45-.9C-.1-.9 0-.6 0-.4C0-.6 .1-.9 .45-.9C1-.9 1.2 0 0 .8z',        // heart
+    STAR,                                                                                  // star
+    'M.2-1L-.5 .1H0L-.2 1 .6-.2H.05z',                                                     // lightning bolt
+    'M0 1C-.7 1-.8 .3-.4-.2-.3 .2 0 .2 0-.1 0-.5-.2-.8 .1-1 .3-.6 .8-.3 .6 .4 .5 .8 .3 1 0 1z', // flame
+    'M-.7 0h1.4M-.7-.35v.7M-.9-.25v.5M.7-.35v.7M.9-.25v.5',                                // dumbbell
+    'M0 0a.2 .2 0 1 1 .2 .2a.4 .4 0 1 1-.6-.4a.7 .7 0 1 1 1.1 .7',                          // swirl
+    'M-1 .3q.9-.8 1.9-.2M.55-.2l.35.3-.4.2'                                                // arrow
+  ];
+  const TAGS=['XITZONE','EXIT!','NO COMFORT','KB WAS HERE','GAINS','BEAST MODE','STAY HUNGRY','LOL','HEHE','20KG CLUB','NO DAYS OFF'];
   function pageMarks(){
-    const w=innerWidth, h=innerHeight, big=Math.min(w*.16,110), cy=h*.36;
-    return [
-      {c:'#ff3b2f',text:'XITZONE',x:w*.5,y:cy,size:big,rot:-8},
-      {c:'#ffd84a',at:[0,-.4],d:'M-1 0l.3-.8.7 .5.7-.5.3 .8z',x:w*.5-big*.25,y:cy-big*.85,s:big*.5,sw:5},  // crown on the tag
-      {c:'#ff5fd2',at:[0,.1], d:'M-1 0q1 .25 2 0',x:w*.5,y:cy+big*.62,s:big*2.2,sw:5},                       // underline swoosh
-      {c:'#4ad3ff',at:[0,0],  d:'M-1 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0M-.35-.3v.12M.35-.3v.12M-.5 .2q.5 .45 1 0',x:w*.24,y:h*.68,s:Math.min(w*.08,46),sw:5}, // smiley
-      {c:'#7cff6b',text:'EXIT →',x:w*.72,y:h*.72,size:big*.5,rot:6}
-    ];
+    const w=innerWidth, h=innerHeight, cols=shuffle(['#ff3b2f','#ffd84a','#ff5fd2','#4ad3ff','#7cff6b']);
+    const fit=(txt,size)=>Math.min(size,(w-30)/(txt.length*.62)); // keep a tag on screen
+    const clampX=(x,half)=>Math.max(half+10,Math.min(w-half-10,x));
+    const tags=shuffle(TAGS), m=[];
+    // one big tag with a crown and a swoosh
+    const t1=tags[0], big=fit(t1,Math.min(w*.16,110)), half=t1.length*.31*big;
+    const tx=clampX(w*rand(.35,.65),half), ty=h*rand(.3,.42);
+    m.push({c:cols[0],text:t1,x:tx,y:ty,size:big,rot:rand(-10,6)});
+    m.push({c:cols[1],at:[0,0],d:DOODLE[0],x:tx-half+big*.4,y:ty-big*.95,s:big*.38,sw:5});
+    m.push({c:cols[2],at:[0,.1],d:'M-1 0q1 .25 2 0',x:tx,y:ty+big*.62,s:half*1.05,sw:5});
+    // three random doodles and a small tag in the corners and along the bottom
+    const slots=shuffle([[.15,.17],[.85,.17],[.15,.7],[.5,.78],[.85,.7]]).slice(0,4);
+    const doodles=shuffle(DOODLE.slice(1));
+    slots.forEach(([sx,sy],i)=>{
+      const x=w*(sx+rand(-.04,.04)), y=h*(sy+rand(-.03,.03)), c=cols[(i+3)%cols.length];
+      if(i===3){
+        const t=tags[1], size=fit(t,big*.45);
+        m.push({c,text:t,x:clampX(x,t.length*.31*size),y,size,rot:rand(-12,12)});
+      } else {
+        m.push({c,at:[0,0],d:doodles[i],x,y,s:Math.min(w*.07,48)*rand(.8,1.2),sw:5});
+      }
+    });
+    return m;
   }
 
   function drawMark(m){
