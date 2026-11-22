@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Xitzone website — V.3 -->
+<!-- Xitzone website — V.4 -->
 <title>Xitzone | Online Balance Coaching with Caydrick</title>
 <meta name="description" content="Exit the comfort zone. Online coaching for balance in mind, body and emotion with Caydrick, an All-American athlete and lululemon ambassador.">
 <meta property="og:title" content="Xitzone | Exit the comfort zone. Find your balance.">
@@ -488,7 +488,7 @@
     </div>
     <div class="legal">
       <p>Xitzone LLC provides educational coaching and wellness services, not medical or mental-health treatment. Talk to your doctor before starting a new program. Individual results will vary.</p>
-      <p>© <span id="yr">2026</span> Xitzone LLC. All rights reserved. · V.3</p>
+      <p>© <span id="yr">2026</span> Xitzone LLC. All rights reserved. · V.4</p>
     </div>
   </div>
 </footer>
@@ -511,11 +511,13 @@
 <!-- KETTLEBELL BUDDIES (cursor held still):
      2s  a kettlebell or weight plate (50/50) walks up and punches the cursor
      10s the other one shows up and they fight
-     then a double knockout; one gets up, punches the letters off the page and cracks the screen,
-     until the whole page collapses. Any mouse move, scroll, click or key rebuilds everything. -->
+     then a double knockout; one gets up (50% of the time it first draws on the other one's face with sharpies),
+     punches the letters off the page and cracks the screen, until the whole page collapses.
+     Any mouse move, scroll, click or key rebuilds everything.
+     On phones and tablets the "cursor" is the middle of the screen, and any touch or scroll counts as movement. -->
 <script>
 (()=>{
-  if(!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  const TOUCH=!matchMedia('(hover:hover) and (pointer:fine)').matches; // phones/tablets: pretend the cursor is mid-screen
   if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   const IDLE=2000, BRAWL_AT=10000, BRAWL_LEN=4500, RAMPAGE_HITS=12;
@@ -555,14 +557,14 @@
   const $=q=>document.querySelector(q);
   const rand=(a,b)=>a+Math.random()*(b-a);
 
-  function makeSprite(svg){
+  function makeSprite(svg,kind){
     const el=document.createElement('div');
     el.className='kb'; el.setAttribute('aria-hidden','true');
     el.innerHTML=`<div class="kb-inner">${svg}</div>`;
     document.body.appendChild(el);
-    return {el,svg:el.querySelector('svg'),gA:el.querySelector('.kb-glove-a'),gB:el.querySelector('.kb-glove-b'),x:0,y:0,raf:0,flip:false,n:0};
+    return {kind,el,svg:el.querySelector('svg'),gA:el.querySelector('.kb-glove-a'),gB:el.querySelector('.kb-glove-b'),x:0,y:0,raf:0,flip:false,n:0};
   }
-  const cast=[makeSprite(KETTLEBELL),makeSprite(PLATE)];
+  const cast=[makeSprite(KETTLEBELL,'kb'),makeSprite(PLATE,'plate')];
 
   let mx=-1,my=-1,state='hidden',idleT=0,loop=0,timers=[];
   let lead=null,other=null,winner=null,loser=null;
@@ -678,7 +680,7 @@
   function resetPose(s){
     s.svg.getAnimations().forEach(a=>a.cancel());
     s.el.getAnimations().forEach(a=>a.cancel());
-    s.el.querySelectorAll('.kb-stars').forEach(e=>e.remove());
+    s.el.querySelectorAll('.kb-stars,.kb-doodle,.kb-marker').forEach(e=>e.remove());
     s.el.classList.remove('cheer','punching');
   }
 
@@ -689,7 +691,55 @@
     later(()=>{pow(L+130,y+HY-20,0,'K.O.!',true); shake(12); fall(left); fall(right)},100);
     winner=Math.random()<.5?left:right; loser=winner===left?right:left;
     later(()=>getUp(winner),2200);
-    later(rampage,2900);
+    later(()=>Math.random()<.5?prank():rampage(),2900); // 50%: sharpie time first
+  }
+
+  // ---- Act 3.5 (50%): the winner draws on the knocked-out one's face ----
+  // Doodles are drawn in each character's own coordinates, so they rotate with the fallen body
+  const DOODLES={
+    kb:[['#4ad3ff','M41 68a9 9 0 1 0 18 0a9 9 0 1 0-18 0M63 68a9 9 0 1 0 18 0a9 9 0 1 0-18 0M59 67q2-2 4 0'], // glasses
+        ['#ffd84a','M61 76q-4-3-9 0q-4 3-7-1M61 76q4-3 9 0q4 3 7-1'],                                       // curly mustache
+        ['#ff5fd2','M33 76c-3-4 3-6 4-2c1-4 7-2 4 2l-4 4z'],                                                   // cheek heart
+        ['#7cff6b','M46 52l4 3 4-3 4 3 4-3 4 3 4-3']],                                                         // forehead scribble
+    plate:[['#4ad3ff','M41 50a8 8 0 1 0 16 0a8 8 0 1 0-16 0M63 50a8 8 0 1 0 16 0a8 8 0 1 0-16 0M57 49q3-2 6 0'],
+           ['#ffd84a','M60 59q-4-3-9 0q-4 3-7-1M60 59q4-3 9 0q4 3 7-1'],
+           ['#ff5fd2','M34 66c-3-4 3-6 4-2c1-4 7-2 4 2l-4 4z'],
+           ['#7cff6b','M44 80l4 3 4-3 4 3 4-3 4 3 4-3 4 3 4-3']]
+  };
+  // Where a fallen character's face ends up on screen (face rotated -82deg around its feet)
+  const faceSpot=s=>({x:s.x+(s.flip?W-2:2),y:s.y+105});
+
+  function prank(){
+    if(state!=='ko') return;
+    state='prank';
+    const face=faceSpot(loser), f=winner.x+W/2>face.x;
+    setFlip(winner,f);
+    move(winner,{x:f?face.x-(W-HX):face.x-HX,y:face.y-HY},700,()=>{
+      const mk=document.createElementNS(NS,'g'); // sharpie in the glove
+      mk.setAttribute('class','kb-marker');
+      mk.innerHTML='<rect x="110" y="72" width="20" height="7" rx="2" fill="#f4f3f1"/><rect class="mc" x="110" y="72" width="6" height="7" rx="1.5"/><path class="mc" d="M130 73l5 2.5-5 2.5z"/>';
+      winner.svg.querySelector('.kb-bob').appendChild(mk);
+      const wiggle=winner.svg.animate([{transform:'translate(0,0)'},{transform:'translate(3px,-2px)'},{transform:'translate(-2px,2px)'},{transform:'translate(2px,1px)'},{transform:'translate(0,0)'}],{duration:180,iterations:Infinity});
+      const canvas=loser.svg.querySelector('.kb-bob'), list=DOODLES[loser.kind];
+      let i=0;
+      const draw=()=>{
+        if(i>=list.length){
+          wiggle.cancel(); mk.remove();
+          pow(face.x,face.y-34,0,'HEHE.');
+          state='ko'; later(rampage,700);
+          return;
+        }
+        const [col,d]=list[i++];
+        mk.querySelectorAll('.mc').forEach(e=>e.setAttribute('fill',col));
+        const p=document.createElementNS(NS,'path');
+        Object.entries({d,class:'kb-doodle',pathLength:'1',fill:'none',stroke:col,'stroke-width':'2.6','stroke-linecap':'round','stroke-linejoin':'round','stroke-dasharray':'1','stroke-dashoffset':'1'})
+          .forEach(([k,v])=>p.setAttribute(k,v));
+        canvas.appendChild(p);
+        p.animate([{strokeDashoffset:1},{strokeDashoffset:0}],{duration:450,easing:'ease-in-out',fill:'forwards'}).onfinish=()=>p.setAttribute('stroke-dashoffset','0');
+        later(draw,600);
+      };
+      later(draw,250);
+    });
   }
 
   // ---- Act 4: the winner punches the letters off the page ----
@@ -840,7 +890,7 @@
       state='end';
       endMsg=document.createElement('div');
       endMsg.className='kb-end';
-      endMsg.innerHTML='<div class="display">Comfort zone<br><span>destroyed.</span></div><small>Move your mouse to rebuild</small>';
+      endMsg.innerHTML=`<div class="display">Comfort zone<br><span>destroyed.</span></div><small>${TOUCH?'Tap':'Move your mouse'} to rebuild</small>`;
       document.body.appendChild(endMsg);
       setFlip(winner,false);
       move(winner,{x:innerWidth/2-60,y:innerHeight/2+70},700,()=>winner.el.classList.add('cheer'));
@@ -870,7 +920,8 @@
   }
 
   function wake(e){
-    if(e&&e.type==='mousemove'){
+    if(TOUCH){mx=innerWidth/2; my=innerHeight/2}
+    else if(e&&e.type==='mousemove'){
       if(e.clientX===mx&&e.clientY===my) return; // ignore synthetic moves with no real motion
       mx=e.clientX; my=e.clientY;
     }
@@ -881,10 +932,11 @@
   const sleep=()=>{clearTimeout(idleT); leaveAll()};
 
   addEventListener('mousemove',wake,{passive:true});
-  ['mousedown','keydown','wheel','scroll','resize'].forEach(t=>addEventListener(t,wake,{passive:true}));
+  ['mousedown','keydown','wheel','scroll','resize','touchstart','touchmove'].forEach(t=>addEventListener(t,wake,{passive:true}));
   document.documentElement.addEventListener('mouseleave',sleep);
   addEventListener('blur',sleep);
-  document.addEventListener('visibilitychange',()=>{if(document.hidden)sleep()});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)sleep(); else if(TOUCH)wake()});
+  if(TOUCH) wake(); // no cursor to wait for: start the idle clock as soon as the page loads
 })();
 </script>
 </body>
