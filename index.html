@@ -3,36 +3,38 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Xitzone website — V.1 -->
-<title>Xitzone | Human Performance & Facility Design</title>
-<meta name="description" content="Xitzone — Exit the comfort zone. High-level 1-on-1 training, corporate wellness programs and commercial gym design.">
-<meta property="og:title" content="Xitzone | Human Performance & Facility Design">
-<meta property="og:description" content="Exit the comfort zone. Elevate your potential.">
+<!-- Xitzone website — V.2 -->
+<title>Xitzone | Online Balance Coaching with Caydrick</title>
+<meta name="description" content="Exit the comfort zone. Online coaching for balance in mind, body and emotion with Caydrick, an All-American athlete and lululemon ambassador.">
+<meta property="og:title" content="Xitzone | Exit the comfort zone. Find your balance.">
+<meta property="og:description" content="Online coaching for mind, body and emotion.">
+<meta property="og:image" content="https://www.xitzone.com/images/caydrick-portrait-web.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0b0c0e; --bg-2:#121418; --card:#16191e; --line:#262a31;
-    --text:#f2f3f5; --muted:#9aa1ac; --accent:#c8ff2e; --accent-ink:#0b0c0e;
+    --bg:#0b0b0c; --bg-2:#121213; --card:#171718; --line:#2a2a2c;
+    --text:#f4f3f1; --muted:#a3a19d; --accent:#ff3b2f; --accent-soft:rgba(255,59,47,.12); --accent-ink:#ffffff;
     --radius:18px; --max:1180px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
   .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
-  .display{font-family:Anton,Impact,sans-serif;text-transform:uppercase;letter-spacing:.01em;line-height:.95}
+  .display{font-family:Anton,Impact,sans-serif;text-transform:uppercase;letter-spacing:.01em;line-height:.95;font-weight:400}
   .eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
-  .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;font-weight:700;font-size:.95rem;transition:transform .2s,background .2s,color .2s}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;font-weight:700;font-size:.95rem;border:0;cursor:pointer;font-family:inherit;transition:transform .2s,background .2s,color .2s,border-color .2s}
   .btn-primary{background:var(--accent);color:var(--accent-ink)}
-  .btn-primary:hover{transform:translateY(-2px)}
+  .btn-primary:hover{transform:translateY(-2px);background:#ff5246}
   .btn-ghost{border:1px solid var(--line);color:var(--text)}
   .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
 
   /* NAV */
   header{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
-  header.scrolled{background:rgba(11,12,14,.85);backdrop-filter:blur(12px);border-color:var(--line)}
+  header.scrolled{background:rgba(11,11,12,.86);backdrop-filter:blur(12px);border-color:var(--line)}
   .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
   .logo{font-family:Anton,sans-serif;font-size:1.7rem;letter-spacing:.04em;text-transform:uppercase}
   .logo span{color:var(--accent)}
@@ -44,107 +46,147 @@
   .menu-btn span{display:block;width:26px;height:2px;background:currentColor;margin:6px 0;transition:.3s}
 
   /* HERO */
-  .hero{min-height:100vh;display:flex;align-items:center;position:relative;padding:120px 0 80px;overflow:hidden}
+  .hero{min-height:100vh;display:flex;align-items:center;position:relative;padding:120px 0 120px;overflow:hidden}
   .hero::before{content:"";position:absolute;inset:0;background:
-      radial-gradient(60% 60% at 80% 20%, rgba(200,255,46,.16), transparent 60%),
-      radial-gradient(50% 50% at 10% 90%, rgba(200,255,46,.07), transparent 60%);}
-  .hero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;opacity:.35;mask-image:radial-gradient(ellipse at center,#000 20%,transparent 75%)}
+      radial-gradient(55% 55% at 85% 25%, rgba(255,59,47,.16), transparent 60%),
+      radial-gradient(45% 45% at 5% 95%, rgba(255,59,47,.07), transparent 60%);}
   .hero .wrap{position:relative;z-index:1}
-  .hero h1{font-size:clamp(3.4rem,11vw,9.5rem);margin:18px 0 26px}
+  .hero-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:56px;align-items:center}
+  .hero h1{font-size:clamp(3.2rem,8.5vw,7.6rem);margin:18px 0 26px}
   .hero h1 .outline{color:transparent;-webkit-text-stroke:2px var(--text)}
   .hero h1 .hl{color:var(--accent)}
-  .hero p.lead{font-size:clamp(1.05rem,2vw,1.3rem);color:var(--muted);max-width:620px;margin-bottom:38px}
+  .hero p.lead{font-size:clamp(1.05rem,1.8vw,1.25rem);color:var(--muted);max-width:560px;margin-bottom:38px}
   .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .portrait{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/5;border:1px solid var(--line);background:var(--card)}
+  .portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+  .portrait .tag{position:absolute;left:16px;right:16px;bottom:16px;background:rgba(11,11,12,.78);backdrop-filter:blur(8px);border:1px solid var(--line);padding:12px 16px;border-radius:14px;font-size:.85rem;display:flex;justify-content:space-between;gap:10px;align-items:center}
+  .portrait .tag strong{font-weight:700}
+  .portrait .tag span{color:var(--accent);font-weight:600;white-space:nowrap}
   .ticker{position:absolute;bottom:0;left:0;right:0;border-top:1px solid var(--line);background:var(--bg-2);overflow:hidden;z-index:1}
   .ticker-track{display:flex;gap:48px;padding:16px 0;white-space:nowrap;animation:scroll 30s linear infinite;width:max-content}
   .ticker-track span{font-family:Anton,sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-size:1.1rem}
   .ticker-track span::after{content:"✦";color:var(--accent);margin-left:48px}
   @keyframes scroll{to{transform:translateX(-50%)}}
 
-  /* PILLARS */
   section{padding:110px 0}
   .section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:56px;flex-wrap:wrap}
   .section-head h2{font-size:clamp(2.4rem,6vw,4.5rem)}
-  .section-head p{color:var(--muted);max-width:420px}
+  .section-head p{color:var(--muted);max-width:440px}
+
+  /* STORY */
+  .story{border-top:1px solid var(--line)}
+  .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+  .story h2{font-size:clamp(2.6rem,6vw,4.6rem);margin:14px 0 0}
+  .story p{color:var(--muted);font-size:1.1rem;margin-bottom:20px}
+  .story p strong{color:var(--text);font-weight:600}
+  .text-link{display:inline-flex;gap:8px;align-items:center;font-weight:700;color:var(--accent);margin-top:8px}
+  .text-link:hover{gap:12px}
+  .text-link{transition:gap .2s}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:72px}
+  .stat{background:var(--bg);padding:28px 24px}
+  .stat .n{font-family:Anton,sans-serif;font-size:2rem;text-transform:uppercase;line-height:1}
+  .stat .n em{font-style:normal;color:var(--accent)}
+  .stat .l{color:var(--muted);font-size:.9rem;margin-top:8px}
+
+  /* BALANCE */
+  .balance{background:var(--bg-2);border-top:1px solid var(--line)}
   .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  .pillar{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:36px 30px 32px;overflow:hidden;transition:transform .3s,border-color .3s;display:flex;flex-direction:column;min-height:420px}
+  .pillar{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:36px 30px 34px;overflow:hidden;transition:transform .3s,border-color .3s;min-height:340px;display:flex;flex-direction:column}
   .pillar:hover{transform:translateY(-6px);border-color:var(--accent)}
-  .pillar .num{font-family:Anton,sans-serif;font-size:5.5rem;line-height:1;color:transparent;-webkit-text-stroke:1px #3a3f48;position:absolute;top:18px;right:24px}
-  .pillar .icon{width:56px;height:56px;border-radius:14px;background:rgba(200,255,46,.1);display:grid;place-items:center;color:var(--accent);margin-bottom:28px}
-  .pillar h3{font-size:2.2rem;margin-bottom:6px}
-  .pillar .sub{color:var(--accent);font-weight:600;font-size:.9rem;margin-bottom:16px}
-  .pillar p{color:var(--muted);margin-bottom:24px}
-  .pillar .more{margin-top:auto;font-weight:700;display:inline-flex;gap:8px;align-items:center}
-  .pillar:hover .more{color:var(--accent)}
+  .pillar .num{font-family:Anton,sans-serif;font-size:5.5rem;line-height:1;color:transparent;-webkit-text-stroke:1px #3b3b3e;position:absolute;top:18px;right:24px}
+  .pillar .icon{width:56px;height:56px;border-radius:14px;background:var(--accent-soft);display:grid;place-items:center;color:var(--accent);margin-bottom:28px}
+  .pillar h3{font-size:2.4rem;margin-bottom:12px}
+  .pillar p{color:var(--muted)}
 
-  /* SERVICE DETAIL */
-  .service{border-top:1px solid var(--line)}
-  .service:nth-of-type(even){background:var(--bg-2)}
-  .service-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-  .service.flip .visual{order:2}
-  .visual{aspect-ratio:4/5;border-radius:var(--radius);border:1px solid var(--line);position:relative;overflow:hidden;background:var(--card)}
-  .visual .bg{position:absolute;inset:0}
-  .visual .tag{position:absolute;left:20px;bottom:20px;background:rgba(11,12,14,.75);backdrop-filter:blur(8px);border:1px solid var(--line);padding:10px 16px;border-radius:999px;font-size:.85rem;font-weight:600}
-  .visual .big{position:absolute;inset:auto 0 50% 0;transform:translateY(50%);text-align:center;font-family:Anton,sans-serif;font-size:clamp(4rem,10vw,8rem);color:transparent;-webkit-text-stroke:1.5px rgba(200,255,46,.55);text-transform:uppercase}
-  .v-pro .bg{background:radial-gradient(circle at 30% 30%,rgba(200,255,46,.25),transparent 55%),repeating-linear-gradient(135deg,#16191e 0 22px,#1a1e24 22px 44px)}
-  .v-ent .bg{background:radial-gradient(circle at 70% 25%,rgba(200,255,46,.22),transparent 55%),radial-gradient(circle,#2a2f37 1.5px,transparent 1.6px) 0 0/22px 22px,#16191e}
-  .v-com .bg{background:radial-gradient(circle at 40% 70%,rgba(200,255,46,.22),transparent 55%),linear-gradient(#262a31 1px,transparent 1px) 0 0/40px 40px,linear-gradient(90deg,#262a31 1px,transparent 1px) 0 0/40px 40px,#16191e}
-  .service h2{font-size:clamp(2.6rem,6vw,4.6rem);margin:14px 0 20px}
-  .service .intro{color:var(--muted);font-size:1.08rem;margin-bottom:32px}
-  .features{list-style:none;display:grid;gap:14px;margin-bottom:36px}
-  .features li{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.015)}
-  .features li svg{flex:0 0 22px;color:var(--accent);margin-top:2px}
-  .features strong{display:block;font-weight:600}
-  .features small{color:var(--muted);font-size:.9rem}
+  /* COACHING */
+  .coaching{border-top:1px solid var(--line)}
+  .coach-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+  .coaching h2{font-size:clamp(2.6rem,6vw,4.6rem);margin:14px 0 20px}
+  .coaching .intro{color:var(--muted);font-size:1.08rem;margin-bottom:32px}
+  .steps{list-style:none;display:grid;gap:14px;counter-reset:s}
+  .steps li{display:flex;gap:18px;align-items:flex-start;padding:20px 22px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.015);counter-increment:s}
+  .steps li::before{content:"0" counter(s);font-family:Anton,sans-serif;color:var(--accent);font-size:1.4rem;line-height:1.2;flex:0 0 auto}
+  .steps strong{display:block;font-weight:600;font-size:1.05rem}
+  .steps small{color:var(--muted);font-size:.93rem}
+  .fit{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:34px 30px}
+  .fit h3{font-size:1.6rem;margin-bottom:18px}
+  .fit ul{list-style:none;display:grid;gap:12px;margin-bottom:28px}
+  .fit li{display:flex;gap:12px;color:var(--muted)}
+  .fit li svg{flex:0 0 20px;color:var(--accent);margin-top:3px}
+  .fit .btn{width:100%;justify-content:center}
 
-  /* PRINCIPLES */
-  .principles{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  .principle{padding:34px 30px;border-radius:var(--radius);border:1px solid var(--line);background:var(--card)}
-  .principle .k{font-family:Anton,sans-serif;color:var(--accent);font-size:1rem;letter-spacing:.1em}
-  .principle h3{font-size:1.35rem;margin:12px 0 10px}
-  .principle p{color:var(--muted);font-size:.97rem}
-  .mission{text-align:center;padding:40px 0 70px}
-  .mission blockquote{font-size:clamp(2rem,5.5vw,4.2rem);max-width:1000px;margin:0 auto}
-  .mission blockquote em{font-style:normal;color:var(--accent)}
+  /* LAB */
+  .lab{background:var(--bg-2);border-top:1px solid var(--line)}
+  .lab-box{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
+  .lab h2{font-size:clamp(2.4rem,5.5vw,4.2rem);margin:14px 0 20px}
+  .lab p{color:var(--muted);font-size:1.05rem;margin-bottom:16px}
+  .terminal{background:#0d0d0e;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86rem}
+  .terminal .bar{display:flex;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line)}
+  .terminal .bar i{width:11px;height:11px;border-radius:50%;background:#2e2e31}
+  .terminal .bar i:first-child{background:var(--accent)}
+  .terminal pre{padding:22px 20px;color:#c9c7c3;white-space:pre-wrap;line-height:1.75}
+  .terminal .k{color:var(--accent)}
+  .terminal .c{color:#6f6d69}
 
-  /* CTA */
-  .cta{padding:0 0 110px}
-  .cta-box{background:var(--accent);color:var(--accent-ink);border-radius:28px;padding:70px 56px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center;position:relative;overflow:hidden}
-  .cta-box::after{content:"XZ";position:absolute;right:-20px;bottom:-70px;font-family:Anton,sans-serif;font-size:18rem;line-height:1;color:rgba(0,0,0,.07)}
-  .cta-box h2{font-size:clamp(2.4rem,5.5vw,4.4rem)}
-  .cta-box p{font-size:1.08rem;margin-top:14px;max-width:520px;opacity:.8}
-  .cta-actions{display:flex;flex-direction:column;gap:12px;position:relative;z-index:1}
-  .cta-actions .btn{justify-content:center}
-  .btn-dark{background:var(--accent-ink);color:var(--accent)}
-  .btn-dark:hover{transform:translateY(-2px)}
-  .btn-outline-dark{border:1.5px solid var(--accent-ink);color:var(--accent-ink)}
-  .btn-outline-dark:hover{background:rgba(0,0,0,.08)}
+  /* JOURNAL */
+  .journal{border-top:1px solid var(--line)}
+  .post{display:grid;grid-template-columns:1fr 1.2fr;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--card);transition:border-color .3s,transform .3s}
+  .post:hover{border-color:var(--accent);transform:translateY(-4px)}
+  .post .art{min-height:320px;background:radial-gradient(circle at 30% 30%,rgba(255,59,47,.35),transparent 60%),repeating-linear-gradient(135deg,#171718 0 22px,#1c1c1e 22px 44px);display:grid;place-items:center}
+  .post .art span{font-family:Anton,sans-serif;font-size:clamp(4rem,9vw,7rem);color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.55);text-transform:uppercase}
+  .post .body{padding:44px 40px;display:flex;flex-direction:column;justify-content:center}
+  .post .meta{color:var(--muted);font-size:.85rem;margin:10px 0 14px}
+  .post h3{font-size:clamp(2rem,4vw,3rem);margin-bottom:16px}
+  .post p{color:var(--muted);margin-bottom:22px}
+
+  /* APPLY */
+  .apply{border-top:1px solid var(--line);background:var(--bg-2)}
+  .apply-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+  .apply h2{font-size:clamp(2.6rem,6vw,4.6rem);margin:14px 0 20px}
+  .apply .intro{color:var(--muted);font-size:1.08rem;margin-bottom:24px}
+  form{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:36px 32px;display:grid;gap:20px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  label,.legend{display:block;font-weight:600;font-size:.9rem;margin-bottom:8px}
+  label small{color:var(--muted);font-weight:400}
+  input[type=text],input[type=email],textarea,select{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px 16px;color:var(--text);font:inherit;font-size:1rem;transition:border-color .2s}
+  input:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent)}
+  textarea{min-height:120px;resize:vertical}
+  fieldset{border:0}
+  .chips{display:flex;gap:10px;flex-wrap:wrap}
+  .chip input{position:absolute;opacity:0;pointer-events:none}
+  .chip span{display:inline-block;padding:10px 18px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-weight:600;font-size:.92rem;cursor:pointer;transition:.2s}
+  .chip input:checked+span{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+  .chip input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
+  form .btn{justify-content:center;width:100%;font-size:1rem;padding:17px}
+  .form-note{color:var(--muted);font-size:.82rem;text-align:center}
+  .hp{position:absolute;left:-9999px}
 
   /* FOOTER */
   footer{border-top:1px solid var(--line);padding:56px 0 36px;color:var(--muted);font-size:.9rem}
   .foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:36px}
   .foot .logo{color:var(--text);margin-bottom:8px;display:block}
   .foot-links{display:flex;gap:28px;flex-wrap:wrap}
-  .foot-links a:hover,.social a:hover{color:var(--accent)}
+  .foot-links a:hover{color:var(--accent)}
   .social{display:flex;gap:12px;margin-top:16px}
   .social a{width:42px;height:42px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;transition:color .2s,border-color .2s}
-  .social a:hover{border-color:var(--accent)}
+  .social a:hover{border-color:var(--accent);color:var(--accent)}
   .legal{border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.8rem}
   .legal p{max-width:680px}
 
-  /* REVEAL */
   .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
   .reveal.in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.ticker-track{animation:none}html{scroll-behavior:auto}}
 
-  /* RESPONSIVE */
   @media (max-width:960px){
-    .pillars,.principles{grid-template-columns:1fr}
+    .hero-grid,.story-grid,.coach-grid,.lab-box,.apply-grid,.post{grid-template-columns:1fr}
+    .hero-grid{gap:44px}
+    .portrait{max-width:440px;aspect-ratio:4/4.4}
+    .story-grid,.coach-grid,.lab-box,.apply-grid{gap:40px}
+    .pillars{grid-template-columns:1fr}
     .pillar{min-height:auto}
-    .service-grid{grid-template-columns:1fr;gap:40px}
-    .service.flip .visual{order:0}
-    .visual{aspect-ratio:16/10}
-    .cta-box{grid-template-columns:1fr;padding:48px 28px}
+    .stats{grid-template-columns:1fr 1fr}
+    .post .art{min-height:200px}
+    .post .body{padding:32px 26px}
   }
   @media (max-width:760px){
     .menu-btn{display:block}
@@ -156,24 +198,29 @@
     .menu-btn.open span:nth-child(2){opacity:0}
     .menu-btn.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
     section{padding:80px 0}
-    .hero{padding-bottom:110px}
+    .hero{padding:110px 0 120px}
     .hero-ctas{flex-direction:column}
     .hero-ctas .btn{justify-content:center}
+    .row{grid-template-columns:1fr}
+    form{padding:28px 20px}
+    .stat{padding:22px 16px;min-width:0}
+    .stat .n{font-size:1.45rem}
+    .stat .l{font-size:.85rem}
   }
 </style>
 </head>
 <body>
 
-<header id="top">
+<header>
   <div class="wrap nav">
     <a href="#" class="logo">Xit<span>zone</span></a>
     <button class="menu-btn" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="nav-links">
-      <a href="#professional">Professional</a>
-      <a href="#enterprise">Enterprise</a>
-      <a href="#commercial">Commercial</a>
-      <a href="#about">About</a>
-      <a href="#contact" class="btn btn-primary">Let's Talk</a>
+      <a href="#story">Story</a>
+      <a href="#coaching">Coaching</a>
+      <a href="#lab">Lab</a>
+      <a href="#journal">Journal</a>
+      <a href="#apply" class="btn btn-primary">Apply</a>
     </nav>
   </div>
 </header>
@@ -181,147 +228,192 @@
 <main>
   <!-- HERO -->
   <section class="hero">
-    <div class="wrap">
-      <div class="eyebrow reveal">Human Performance &amp; Facility Design</div>
-      <h1 class="display reveal">Exit the<br><span class="outline">comfort</span> <span class="hl">zone.</span></h1>
-      <p class="lead reveal">Elite 1-on-1 coaching, corporate wellness that actually moves people, and gym spaces built for performance. Transform challenge into progress.</p>
-      <div class="hero-ctas reveal">
-        <a href="#services" class="btn btn-primary">Explore Services
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a href="#contact" class="btn btn-ghost">Book a Consult</a>
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow reveal">Online coaching · Mind · Body · Emotion</div>
+        <h1 class="display reveal">Exit the<br><span class="outline">comfort</span> <span class="hl">zone.</span></h1>
+        <p class="lead reveal">The comfort zone isn't rest. It's autopilot. I coach people to choose growth on purpose and build the balance in mind, body and emotion that makes it last.</p>
+        <div class="hero-ctas reveal">
+          <a href="#apply" class="btn btn-primary">Apply for Coaching
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="#story" class="btn btn-ghost">Read My Story</a>
+        </div>
       </div>
+      <figure class="portrait reveal">
+        <img src="images/caydrick-portrait-web.jpg" alt="Caydrick, Xitzone coach, seated in a plaid shirt" width="1050" height="1400">
+        <figcaption class="tag"><strong>Caydrick Bloomquist</strong><span>lululemon Ambassador</span></figcaption>
+      </figure>
     </div>
     <div class="ticker" aria-hidden="true">
       <div class="ticker-track">
-        <span>1-on-1 Training</span><span>Lunch &amp; Learns</span><span>Team Building</span><span>Corporate Events</span><span>Keynote Speaking</span><span>Commercial Gym Design</span>
-        <span>1-on-1 Training</span><span>Lunch &amp; Learns</span><span>Team Building</span><span>Corporate Events</span><span>Keynote Speaking</span><span>Commercial Gym Design</span>
+        <span>Mind</span><span>Body</span><span>Emotion</span><span>Balance</span><span>Exit the comfort zone</span><span>Come back stronger</span>
+        <span>Mind</span><span>Body</span><span>Emotion</span><span>Balance</span><span>Exit the comfort zone</span><span>Come back stronger</span>
       </div>
     </div>
   </section>
 
-  <!-- PILLARS -->
-  <section id="services">
+  <!-- STORY -->
+  <section id="story" class="story">
+    <div class="wrap">
+      <div class="story-grid">
+        <div class="reveal">
+          <div class="eyebrow">My story</div>
+          <h2 class="display">Knocked down.<br>Came back<br><span style="color:var(--accent)">stronger.</span></h2>
+        </div>
+        <div class="reveal">
+          <p>I didn't always get to choose when I left my comfort zone. Twice, my own health made that choice for me. Both times I had to decide who I'd be on the other side.</p>
+          <p>I came back <strong>better, stronger, smarter and more grounded</strong> than before. Records, an All-American season and a two-sport college career came out of that comeback. More than any of that, I came out with the lesson I now coach: <strong>growth needs balance to last.</strong></p>
+          <a href="blog/the-comeback.html" class="text-link">Read the full story →</a>
+        </div>
+      </div>
+      <div class="stats reveal">
+        <div class="stat"><div class="n">All-<em>American</em></div><div class="l">College athlete</div></div>
+        <div class="stat"><div class="n"><em>2×</em> Record</div><div class="l">School record holder, high school &amp; college</div></div>
+        <div class="stat"><div class="n"><em>2</em>-Sport</div><div class="l">College athlete: basketball &amp; track</div></div>
+        <div class="stat"><div class="n">Ambas<em>sador</em></div><div class="l">lululemon</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BALANCE -->
+  <section class="balance">
     <div class="wrap">
       <div class="section-head reveal">
         <div>
-          <div class="eyebrow">What we do</div>
-          <h2 class="display">Three ways<br>to level up.</h2>
+          <div class="eyebrow">The approach</div>
+          <h2 class="display">Balance is<br>the edge.</h2>
         </div>
-        <p>Whether it's one athlete, an entire company, or the facility they train in — Xitzone builds performance from the ground up.</p>
+        <p>Pushing harder only works for so long. Real progress happens when all three parts of you move forward together.</p>
       </div>
-
       <div class="pillars">
-        <a href="#professional" class="pillar reveal">
+        <div class="pillar reveal">
           <span class="num">01</span>
-          <div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.5 6.5h11M6.5 17.5h11M3 9v6M21 9v6M6 5v14M18 5v14"/></svg></div>
-          <h3 class="display">Professional</h3>
-          <div class="sub">High-level 1-on-1 training</div>
-          <p>Individualized programming and coaching for athletes, executives and driven people who want measurable results — not generic workouts.</p>
-          <span class="more">Learn more →</span>
-        </a>
-        <a href="#enterprise" class="pillar reveal">
+          <div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 3a4.5 4.5 0 0 0-4.4 5.4A4 4 0 0 0 6 16h1v3a2 2 0 0 0 2 2h1V3.3A4.5 4.5 0 0 0 9.5 3zM14.5 3a4.5 4.5 0 0 1 4.4 5.4A4 4 0 0 1 18 16h-1v3a2 2 0 0 1-2 2h-1V3.3A4.5 4.5 0 0 1 14.5 3z"/></svg></div>
+          <h3 class="display">Mind</h3>
+          <p>Focus, mindset and the habits behind them. Learn to stay clear and steady when life gets loud, and to choose discomfort on purpose.</p>
+        </div>
+        <div class="pillar reveal">
           <span class="num">02</span>
-          <div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 14.5c3 0 6 1.9 6 5.5"/></svg></div>
-          <h3 class="display">Enterprise</h3>
-          <div class="sub">Corporate wellness &amp; speaking</div>
-          <p>Lunch &amp; Learns, team building, corporate events and keynote speaking that boost energy, culture and performance across your organization.</p>
-          <span class="more">Learn more →</span>
-        </a>
-        <a href="#commercial" class="pillar reveal">
+          <div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.5 6.5h11M6.5 17.5h11M3 9v6M21 9v6M6 5v14M18 5v14"/></svg></div>
+          <h3 class="display">Body</h3>
+          <p>Training, movement and recovery built around your life, not the other way around. Strong, mobile and resilient for the long run.</p>
+        </div>
+        <div class="pillar reveal">
           <span class="num">03</span>
-          <div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-7h6v7M3 21h18"/></svg></div>
-          <h3 class="display">Commercial</h3>
-          <div class="sub">Commercial gym design</div>
-          <p>Layout, equipment strategy and flow for gyms, corporate fitness centers and training facilities — designed by someone who actually coaches in them.</p>
-          <span class="more">Learn more →</span>
-        </a>
+          <div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.6-9.3-9.2C1.4 8.4 3.6 4.5 7.4 4.5c2 0 3.5 1.1 4.6 2.6 1.1-1.5 2.6-2.6 4.6-2.6 3.8 0 6 3.9 4.7 7.3C19.5 16.4 12 21 12 21z"/></svg></div>
+          <h3 class="display">Emotion</h3>
+          <p>Stress, setbacks and the stories we tell ourselves. Build the emotional ground that lets you bounce back instead of break down.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- PROFESSIONAL -->
-  <section id="professional" class="service">
-    <div class="wrap service-grid">
-      <div class="visual v-pro reveal"><div class="bg"></div><div class="big">1 v 1</div><div class="tag">01 — Professional</div></div>
+  <!-- COACHING -->
+  <section id="coaching" class="coaching">
+    <div class="wrap coach-grid">
       <div class="reveal">
-        <div class="eyebrow">01 — Professional</div>
-        <h2 class="display">High-level<br>1-on-1 training.</h2>
-        <p class="intro">Coaching built entirely around you — your goals, your body, your schedule. We meet you where you are and push you to where you want to be.</p>
-        <ul class="features">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l5 5L20 7"/></svg><div><strong>Performance assessment</strong><small>Movement, strength and conditioning baseline to build your plan from.</small></div></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l5 5L20 7"/></svg><div><strong>Custom programming</strong><small>Evidence-informed training that evolves as you do.</small></div></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l5 5L20 7"/></svg><div><strong>Accountability &amp; progress tracking</strong><small>Clear metrics, regular check-ins, real progress.</small></div></li>
-        </ul>
-        <a href="#contact" class="btn btn-primary">Start Training</a>
+        <div class="eyebrow">Online coaching</div>
+        <h2 class="display">One coach.<br>Your whole life.</h2>
+        <p class="intro">Fully online, built around you, wherever you are. We find what's out of balance, build a plan for all three areas, and check in each month to keep you moving forward.</p>
+        <ol class="steps">
+          <li><div><strong>Apply</strong><small>Tell me where you are and where you want to be. I read every application personally.</small></div></li>
+          <li><div><strong>Build your plan</strong><small>A personalized plan across mind, body and emotion that fits your real schedule.</small></div></li>
+          <li><div><strong>Live it</strong><small>Put the plan to work in your daily life, step outside your comfort zone, and build momentum.</small></div></li>
+          <li><div><strong>Monthly 1:1 check-in</strong><small>Each month we review what's working, adjust what isn't, and set the next challenge.</small></div></li>
+        </ol>
       </div>
+      <aside class="fit reveal">
+        <h3 class="display">This is for you if…</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l5 5L20 7"/></svg>You feel stuck on autopilot and know there's more in you.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l5 5L20 7"/></svg>You're coming back from a setback, physical or otherwise.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l5 5L20 7"/></svg>You push hard but keep burning out.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l5 5L20 7"/></svg>You want a coach who looks at the whole person, not just the workout.</li>
+        </ul>
+        <a href="#apply" class="btn btn-primary">Apply for Coaching</a>
+      </aside>
     </div>
   </section>
 
-  <!-- ENTERPRISE -->
-  <section id="enterprise" class="service flip">
-    <div class="wrap service-grid">
-      <div class="visual v-ent reveal"><div class="bg"></div><div class="big">Team</div><div class="tag">02 — Enterprise</div></div>
+  <!-- LAB -->
+  <section id="lab" class="lab">
+    <div class="wrap lab-box">
       <div class="reveal">
-        <div class="eyebrow">02 — Enterprise</div>
-        <h2 class="display">Corporate<br>wellness.</h2>
-        <p class="intro">Healthier people build stronger companies. Engaging, practical programs that leave your team with energy and habits they keep.</p>
-        <ul class="features">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l5 5L20 7"/></svg><div><strong>Lunch &amp; Learns</strong><small>Bite-sized sessions on movement, recovery, stress and nutrition.</small></div></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l5 5L20 7"/></svg><div><strong>Team building</strong><small>Active challenges that build trust, communication and grit.</small></div></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l5 5L20 7"/></svg><div><strong>Corporate events</strong><small>Wellness activations for offsites, conferences and company days.</small></div></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l5 5L20 7"/></svg><div><strong>Keynote speaking</strong><small>High-energy talks on performance, resilience and exiting the comfort zone.</small></div></li>
-        </ul>
-        <a href="#contact" class="btn btn-primary">Bring Xitzone to Your Team</a>
+        <div class="eyebrow">The Lab</div>
+        <h2 class="display">Curious<br>by nature.</h2>
+        <p>Outside of coaching, I build AI systems that turn game data into scouting reports for basketball teams. It's the same instinct I bring to coaching: study the patterns, find the edge, and make a better plan.</p>
+        <p>I share what I'm building, and what it's teaching me, in the Journal.</p>
+      </div>
+      <div class="terminal reveal" aria-label="Illustration of an AI scouting report">
+        <div class="bar"><i></i><i></i><i></i></div>
+<pre><span class="c">// scouting_report.generate()</span>
+<span class="k">opponent</span>  → pace, sets, tendencies
+<span class="k">players</span>   → hot zones, go-to moves
+<span class="k">matchups</span>  → where we have the edge
+<span class="k">game plan</span> → 3 keys to win
+
+<span class="c">✓ report ready for tip-off</span></pre>
       </div>
     </div>
   </section>
 
-  <!-- COMMERCIAL -->
-  <section id="commercial" class="service">
-    <div class="wrap service-grid">
-      <div class="visual v-com reveal"><div class="bg"></div><div class="big">Build</div><div class="tag">03 — Commercial</div></div>
-      <div class="reveal">
-        <div class="eyebrow">03 — Commercial</div>
-        <h2 class="display">Commercial<br>gym design.</h2>
-        <p class="intro">Spaces that perform as hard as the people in them. From concept to opening day, we design facilities that are functional, efficient and built to impress.</p>
-        <ul class="features">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l5 5L20 7"/></svg><div><strong>Layout &amp; floor planning</strong><small>Zoning and traffic flow that maximize every square foot.</small></div></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l5 5L20 7"/></svg><div><strong>Equipment selection</strong><small>The right mix for your members, budget and programming.</small></div></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l5 5L20 7"/></svg><div><strong>Corporate &amp; private facilities</strong><small>Office gyms, studios, team facilities and residential amenities.</small></div></li>
-        </ul>
-        <a href="#contact" class="btn btn-primary">Design Your Space</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT / PRINCIPLES -->
-  <section id="about">
+  <!-- JOURNAL -->
+  <section id="journal" class="journal">
     <div class="wrap">
-      <div class="mission reveal">
-        <div class="eyebrow" style="margin-bottom:22px">Our mission</div>
-        <blockquote class="display">Exit the comfort zone. <em>Elevate your potential.</em> Push human performance forward.</blockquote>
-      </div>
-      <div class="principles">
-        <div class="principle reveal"><div class="k">01</div><h3>Client-Centric Coaching</h3><p>Every program, session and interaction is built around the unique goals, abilities and realities of the client.</p></div>
-        <div class="principle reveal"><div class="k">02</div><h3>Commitment to Excellence</h3><p>The highest standards in training, education and professional conduct. Excellence isn't an outcome — it's a daily practice.</p></div>
-        <div class="principle reveal"><div class="k">03</div><h3>Intelligent Innovation</h3><p>Proven methods combined with modern performance science — intentional, evidence-informed and always in service of results.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section id="contact" class="cta">
-    <div class="wrap">
-      <div class="cta-box reveal">
+      <div class="section-head reveal">
         <div>
-          <h2 class="display">Ready to exit<br>the comfort zone?</h2>
-          <p>Tell us what you're working toward — training, a corporate program, or a new facility — and we'll get back to you within 24 hours.</p>
+          <div class="eyebrow">Journal</div>
+          <h2 class="display">Notes from<br>the edge.</h2>
         </div>
-        <div class="cta-actions">
-          <a class="btn btn-dark" href="mailto:caydrick@xitzone.com?subject=Xitzone%20Inquiry">Email caydrick@xitzone.com</a>
-          <a class="btn btn-outline-dark" href="https://www.instagram.com/caydrick.co/" target="_blank" rel="noopener">DM on Instagram</a>
-        </div>
+        <p>Writing on balance, comebacks, and building things with AI, from someone still stepping out of his comfort zone.</p>
       </div>
+      <a href="blog/the-comeback.html" class="post reveal">
+        <div class="art"><span>Exit 01</span></div>
+        <div class="body">
+          <div class="eyebrow">Comeback</div>
+          <div class="meta">Featured story · 5 min read</div>
+          <h3 class="display">The comeback.</h3>
+          <p>A diagnosis at 12. Life-saving surgeries at 19. Then All-American. What two forced exits from my comfort zone taught me about coming back stronger.</p>
+          <span class="text-link">Read the story →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- APPLY -->
+  <section id="apply" class="apply">
+    <div class="wrap apply-grid">
+      <div class="reveal">
+        <div class="eyebrow">Apply</div>
+        <h2 class="display">Ready to<br>exit the<br><span style="color:var(--accent)">comfort zone?</span></h2>
+        <p class="intro">Tell me a little about where you are and where you want to go. I'll personally read your application and reply within a few days.</p>
+        <p class="intro" style="font-size:.95rem">Prefer to talk first? Email <a href="mailto:caydrick@xitzone.com" style="color:var(--text);text-decoration:underline">caydrick@xitzone.com</a>.</p>
+      </div>
+      <form class="reveal" action="https://formsubmit.co/caydrick@xitzone.com" method="POST">
+        <input type="hidden" name="_subject" value="New Xitzone coaching application">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://www.xitzone.com/thanks.html">
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="row">
+          <div><label for="f-name">Name</label><input id="f-name" type="text" name="name" required autocomplete="name"></div>
+          <div><label for="f-email">Email</label><input id="f-email" type="email" name="email" required autocomplete="email"></div>
+        </div>
+        <fieldset>
+          <div class="legend">What feels most out of balance? <small style="color:var(--muted);font-weight:400">(pick any)</small></div>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="focus" value="Mind"><span>Mind</span></label>
+            <label class="chip"><input type="checkbox" name="focus" value="Body"><span>Body</span></label>
+            <label class="chip"><input type="checkbox" name="focus" value="Emotion"><span>Emotion</span></label>
+            <label class="chip"><input type="checkbox" name="focus" value="Not sure yet"><span>Not sure yet</span></label>
+          </div>
+        </fieldset>
+        <div><label for="f-now">Where are you right now?</label><textarea id="f-now" name="where_you_are" required placeholder="What's going on in your life, training and headspace?"></textarea></div>
+        <div><label for="f-goal">Where do you want to be in 6 months?</label><textarea id="f-goal" name="goal" required></textarea></div>
+        <div><label for="f-heard">How did you find Xitzone? <small>(optional)</small></label><input id="f-heard" type="text" name="heard_about"></div>
+        <button type="submit" class="btn btn-primary">Send My Application</button>
+        <p class="form-note">Your answers go straight to Caydrick and are never shared.</p>
+      </form>
     </div>
   </section>
 </main>
@@ -331,7 +423,7 @@
     <div class="foot">
       <div>
         <a href="#" class="logo">Xit<span style="color:var(--accent)">zone</span></a>
-        <div>Human Performance &amp; Facility Design</div>
+        <div>Exit the comfort zone. Find your balance.</div>
         <div class="social">
           <a href="https://www.instagram.com/caydrick.co/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
           <a href="https://www.linkedin.com/in/caydrick" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.9-1.8-2.9s-2 1.4-2 2.8V21h-4z"/></svg></a>
@@ -339,16 +431,16 @@
         </div>
       </div>
       <nav class="foot-links">
-        <a href="#professional">Professional</a>
-        <a href="#enterprise">Enterprise</a>
-        <a href="#commercial">Commercial</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a href="#story">Story</a>
+        <a href="#coaching">Coaching</a>
+        <a href="#lab">Lab</a>
+        <a href="#journal">Journal</a>
+        <a href="#apply">Apply</a>
       </nav>
     </div>
     <div class="legal">
-      <p>Xitzone LLC provides educational human performance and wellness services, not medical care. Participation in training carries inherent risk. Individual results will vary.</p>
-      <p>© <span id="yr">2026</span> Xitzone LLC. All rights reserved. · V.1</p>
+      <p>Xitzone LLC provides educational coaching and wellness services, not medical or mental-health treatment. Talk to your doctor before starting a new program. Individual results will vary.</p>
+      <p>© <span id="yr">2026</span> Xitzone LLC. All rights reserved. · V.2</p>
     </div>
   </div>
 </footer>
