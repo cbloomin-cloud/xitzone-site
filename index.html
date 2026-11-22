@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Xitzone website — V.4 -->
+<!-- Xitzone website — V.5 -->
 <title>Xitzone | Online Balance Coaching with Caydrick</title>
 <meta name="description" content="Exit the comfort zone. Online coaching for balance in mind, body and emotion with Caydrick, an All-American athlete and lululemon ambassador.">
 <meta property="og:title" content="Xitzone | Exit the comfort zone. Find your balance.">
@@ -11,7 +11,7 @@
 <meta property="og:image" content="https://www.xitzone.com/images/caydrick-headshot-web.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=Permanent+Marker&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#0b0b0c; --bg-2:#121213; --card:#171718; --line:#2a2a2c;
@@ -249,6 +249,7 @@
   .kb-cracks .lt{stroke:rgba(255,255,255,.85);stroke-width:1.1}
   .kb-cracks .spot{fill:rgba(255,255,255,.2)}
   @keyframes kbDraw{to{stroke-dashoffset:0}}
+  .kb-graffiti{position:fixed;left:0;top:0;width:100vw;height:100vh;z-index:9996;pointer-events:none;overflow:visible}
   .kb-shard{position:fixed;z-index:9997;pointer-events:none;white-space:pre;will-change:transform}
   .kb-end{position:fixed;left:50%;top:42%;transform:translate(-50%,-50%);z-index:9997;text-align:center;pointer-events:none;animation:kbFade .8s ease forwards}
   .kb-end .display{font-size:clamp(2.4rem,7vw,5.5rem);color:#f4f3f1}
@@ -288,7 +289,7 @@
         </div>
       </div>
       <figure class="portrait reveal">
-        <img src="images/caydrick-headshot-web.jpg" alt="Headshot of Caydrick, Xitzone coach, smiling" width="1050" height="1400">
+        <img src="images/caydrick-headshot-web.jpg" data-face="0.583,0.396,0.36" alt="Headshot of Caydrick, Xitzone coach, smiling" width="1050" height="1400">
         <figcaption class="tag"><strong>Caydrick Bloomquist</strong><span>lululemon Ambassador</span></figcaption>
       </figure>
     </div>
@@ -416,7 +417,7 @@
         <p>Writing on balance, comebacks, and building things with AI, from someone still stepping out of his comfort zone.</p>
       </div>
       <a href="blog/the-comeback.html" class="post reveal">
-        <div class="art"><img src="images/caydrick-portrait-web.jpg" alt="" loading="lazy"><span>Exit 01</span></div>
+        <div class="art"><img src="images/caydrick-portrait-web.jpg" data-face="0.458,0.25,0.135" alt="" loading="lazy"><span>Exit 01</span></div>
         <div class="body">
           <div class="eyebrow">Comeback</div>
           <div class="meta">Featured story · 5 min read</div>
@@ -488,7 +489,7 @@
     </div>
     <div class="legal">
       <p>Xitzone LLC provides educational coaching and wellness services, not medical or mental-health treatment. Talk to your doctor before starting a new program. Individual results will vary.</p>
-      <p>© <span id="yr">2026</span> Xitzone LLC. All rights reserved. · V.4</p>
+      <p>© <span id="yr">2026</span> Xitzone LLC. All rights reserved. · V.5</p>
     </div>
   </div>
 </footer>
@@ -511,7 +512,8 @@
 <!-- KETTLEBELL BUDDIES (cursor held still):
      2s  a kettlebell or weight plate (50/50) walks up and punches the cursor
      10s the other one shows up and they fight
-     then a double knockout; one gets up (50% of the time it first draws on the other one's face with sharpies),
+     then a double knockout; one gets up (50% of the time it first tags the page with sharpies, or vandalizes
+     a photo of a person if one is on screen),
      punches the letters off the page and cracks the screen, until the whole page collapses.
      Any mouse move, scroll, click or key rebuilds everything.
      On phones and tablets the "cursor" is the middle of the screen, and any touch or scroll counts as movement. -->
@@ -694,52 +696,108 @@
     later(()=>Math.random()<.5?prank():rampage(),2900); // 50%: sharpie time first
   }
 
-  // ---- Act 3.5 (50%): the winner draws on the knocked-out one's face ----
-  // Doodles are drawn in each character's own coordinates, so they rotate with the fallen body
-  const DOODLES={
-    kb:[['#4ad3ff','M41 68a9 9 0 1 0 18 0a9 9 0 1 0-18 0M63 68a9 9 0 1 0 18 0a9 9 0 1 0-18 0M59 67q2-2 4 0'], // glasses
-        ['#ffd84a','M61 76q-4-3-9 0q-4 3-7-1M61 76q4-3 9 0q4 3 7-1'],                                       // curly mustache
-        ['#ff5fd2','M33 76c-3-4 3-6 4-2c1-4 7-2 4 2l-4 4z'],                                                   // cheek heart
-        ['#7cff6b','M46 52l4 3 4-3 4 3 4-3 4 3 4-3']],                                                         // forehead scribble
-    plate:[['#4ad3ff','M41 50a8 8 0 1 0 16 0a8 8 0 1 0-16 0M63 50a8 8 0 1 0 16 0a8 8 0 1 0-16 0M57 49q3-2 6 0'],
-           ['#ffd84a','M60 59q-4-3-9 0q-4 3-7-1M60 59q4-3 9 0q4 3 7-1'],
-           ['#ff5fd2','M34 66c-3-4 3-6 4-2c1-4 7-2 4 2l-4 4z'],
-           ['#7cff6b','M44 80l4 3 4-3 4 3 4-3 4 3 4-3 4 3 4-3']]
-  };
-  // Where a fallen character's face ends up on screen (face rotated -82deg around its feet)
-  const faceSpot=s=>({x:s.x+(s.flip?W-2:2),y:s.y+105});
+  // ---- Act 3.5 (50%): the winner tags the page with sharpies ----
+  // If a photo of a person is on screen, he vandalizes the photo instead.
+  // Photos opt in with data-face="eyeX,eyeY,faceWidth" (fractions of the photo's natural size).
+  let graffiti=null;
+  function gLayer(){
+    if(!graffiti){
+      graffiti=document.createElementNS(NS,'svg');
+      graffiti.setAttribute('class','kb-graffiti'); graffiti.setAttribute('aria-hidden','true');
+      document.body.appendChild(graffiti);
+    }
+    return graffiti;
+  }
+
+  // The photo of a person that is most on screen, and where its face is right now
+  function findFace(){
+    let best=null;
+    document.querySelectorAll('img[data-face]').forEach(img=>{
+      const r=img.getBoundingClientRect(); if(!r.width||!img.naturalWidth) return;
+      const [u,v,fw]=img.dataset.face.split(',').map(Number);
+      const nw=img.naturalWidth, nh=img.naturalHeight, k=Math.max(r.width/nw,r.height/nh); // object-fit:cover
+      const [px,py]=getComputedStyle(img).objectPosition.split(' ').map(p=>parseFloat(p)/100);
+      const dw=nw*k, dh=nh*k;
+      const x=r.left+(r.width-dw)*px+u*dw, y=r.top+(r.height-dh)*py+v*dh, w=fw*dw;
+      if(x<20||x>innerWidth-20||y<70||y>innerHeight-60) return; // face isn't on screen
+      const vis=Math.max(0,Math.min(r.bottom,innerHeight)-Math.max(r.top,0))*Math.max(0,Math.min(r.right,innerWidth)-Math.max(r.left,0));
+      if(!best||vis>best.vis) best={x,y,w,vis};
+    });
+    return best;
+  }
+
+  // Marks: a path in local units drawn at (x,y) scaled by s, or a text tag. "at" is where he stands to draw it.
+  function photoMarks(f){
+    const m=[
+      {c:'#4ad3ff',at:[0,0],   d:'M-.38 0a.16 .16 0 1 0 .32 0a.16 .16 0 1 0-.32 0M.06 0a.16 .16 0 1 0 .32 0a.16 .16 0 1 0-.32 0M-.06 0q.06-.05 .12 0M-.38-.01l-.12-.04M.38-.01l.12-.04'}, // glasses
+      {c:'#ffd84a',at:[0,.29], d:'M0 .29q-.08-.06-.18 0q-.08 .06-.15-.02M0 .29q.08-.06 .18 0q.08 .06 .15-.02'},  // curly mustache
+      {c:'#ff3b2f',at:[0,-.8], d:'M-.3-.78q-.06-.26-.18-.34q.2 .02 .29 .26M.3-.78q.06-.26 .18-.34q-.2 .02-.29 .26'}, // devil horns
+      {c:'#7cff6b',at:[0,.62], d:'M-.14 .62l.07 .09 .07-.09 .07 .09 .07-.09'}                                        // goatee scribble
+    ].map(k=>({...k,x:f.x,y:f.y,s:f.w,sw:Math.max(3,Math.min(8,f.w*.03))}));
+    m.push({c:'#ff5fd2',text:'LOL',x:f.x+f.w*.85,y:f.y-f.w*.55,size:Math.max(24,Math.min(70,f.w*.4)),rot:-12});
+    return m;
+  }
+  function pageMarks(){
+    const w=innerWidth, h=innerHeight, big=Math.min(w*.16,110), cy=h*.36;
+    return [
+      {c:'#ff3b2f',text:'XITZONE',x:w*.5,y:cy,size:big,rot:-8},
+      {c:'#ffd84a',at:[0,-.4],d:'M-1 0l.3-.8.7 .5.7-.5.3 .8z',x:w*.5-big*.25,y:cy-big*.85,s:big*.5,sw:5},  // crown on the tag
+      {c:'#ff5fd2',at:[0,.1], d:'M-1 0q1 .25 2 0',x:w*.5,y:cy+big*.62,s:big*2.2,sw:5},                       // underline swoosh
+      {c:'#4ad3ff',at:[0,0],  d:'M-1 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0M-.35-.3v.12M.35-.3v.12M-.5 .2q.5 .45 1 0',x:w*.24,y:h*.68,s:Math.min(w*.08,46),sw:5}, // smiley
+      {c:'#7cff6b',text:'EXIT →',x:w*.72,y:h*.72,size:big*.5,rot:6}
+    ];
+  }
+
+  function drawMark(m){
+    const L=gLayer();
+    if(m.text){
+      const t=document.createElementNS(NS,'text');
+      Object.entries({x:m.x,y:m.y,'text-anchor':'middle','dominant-baseline':'middle',fill:m.c,
+        transform:`rotate(${m.rot||0} ${m.x} ${m.y})`,'font-size':m.size,'font-family':"'Permanent Marker',Impact,sans-serif",
+        stroke:'#0b0b0c','stroke-width':Math.max(2,m.size*.04),'paint-order':'stroke','stroke-linejoin':'round'})
+        .forEach(([k,v])=>t.setAttribute(k,v));
+      t.textContent=m.text; L.appendChild(t);
+      t.animate([{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0 0 0)'}],{duration:500,easing:'ease-in-out'});
+      return;
+    }
+    const g=document.createElementNS(NS,'g');
+    g.setAttribute('transform',`translate(${m.x} ${m.y}) scale(${m.s})`);
+    const p=document.createElementNS(NS,'path');
+    Object.entries({d:m.d,pathLength:'1',fill:'none',stroke:m.c,'stroke-width':m.sw/m.s,'stroke-linecap':'round','stroke-linejoin':'round','stroke-dasharray':'1','stroke-dashoffset':'1'})
+      .forEach(([k,v])=>p.setAttribute(k,v));
+    g.appendChild(p); L.appendChild(g);
+    p.animate([{strokeDashoffset:1},{strokeDashoffset:0}],{duration:450,easing:'ease-in-out',fill:'forwards'}).onfinish=()=>p.setAttribute('stroke-dashoffset','0');
+  }
 
   function prank(){
     if(state!=='ko') return;
     state='prank';
-    const face=faceSpot(loser), f=winner.x+W/2>face.x;
-    setFlip(winner,f);
-    move(winner,{x:f?face.x-(W-HX):face.x-HX,y:face.y-HY},700,()=>{
-      const mk=document.createElementNS(NS,'g'); // sharpie in the glove
-      mk.setAttribute('class','kb-marker');
-      mk.innerHTML='<rect x="110" y="72" width="20" height="7" rx="2" fill="#f4f3f1"/><rect class="mc" x="110" y="72" width="6" height="7" rx="1.5"/><path class="mc" d="M130 73l5 2.5-5 2.5z"/>';
-      winner.svg.querySelector('.kb-bob').appendChild(mk);
-      const wiggle=winner.svg.animate([{transform:'translate(0,0)'},{transform:'translate(3px,-2px)'},{transform:'translate(-2px,2px)'},{transform:'translate(2px,1px)'},{transform:'translate(0,0)'}],{duration:180,iterations:Infinity});
-      const canvas=loser.svg.querySelector('.kb-bob'), list=DOODLES[loser.kind];
-      let i=0;
-      const draw=()=>{
-        if(i>=list.length){
-          wiggle.cancel(); mk.remove();
-          pow(face.x,face.y-34,0,'HEHE.');
-          state='ko'; later(rampage,700);
-          return;
-        }
-        const [col,d]=list[i++];
-        mk.querySelectorAll('.mc').forEach(e=>e.setAttribute('fill',col));
-        const p=document.createElementNS(NS,'path');
-        Object.entries({d,class:'kb-doodle',pathLength:'1',fill:'none',stroke:col,'stroke-width':'2.6','stroke-linecap':'round','stroke-linejoin':'round','stroke-dasharray':'1','stroke-dashoffset':'1'})
-          .forEach(([k,v])=>p.setAttribute(k,v));
-        canvas.appendChild(p);
-        p.animate([{strokeDashoffset:1},{strokeDashoffset:0}],{duration:450,easing:'ease-in-out',fill:'forwards'}).onfinish=()=>p.setAttribute('stroke-dashoffset','0');
-        later(draw,600);
-      };
-      later(draw,250);
-    });
+    const face=findFace(), marks=face?photoMarks(face):pageMarks();
+    const mk=document.createElementNS(NS,'g'); // sharpie in the glove
+    mk.setAttribute('class','kb-marker');
+    mk.innerHTML='<rect x="110" y="72" width="20" height="7" rx="2" fill="#f4f3f1"/><rect class="mc" x="110" y="72" width="6" height="7" rx="1.5"/><path class="mc" d="M130 73l5 2.5-5 2.5z"/>';
+    let i=0, wiggle=null, last=null;
+    const next=()=>{
+      if(wiggle){wiggle.cancel(); wiggle=null}
+      if(i>=marks.length){
+        mk.remove();
+        if(last) pow(last.x,last.y-40,0,'HEHE.');
+        state='ko'; later(rampage,700);
+        return;
+      }
+      const m=marks[i++], [ax,ay]=m.at||[0,0];
+      const tx=m.x+ax*(m.s||0), ty=m.y+ay*(m.s||0); last={x:tx,y:ty};
+      const f=winner.x+W/2>tx; setFlip(winner,f);
+      const to={x:f?tx-(W-HX):tx-HX,y:Math.max(-30,Math.min(innerHeight-110,ty-HY))};
+      move(winner,to,Math.max(250,Math.min(700,Math.hypot(to.x-winner.x,to.y-winner.y)*.8)),()=>{
+        mk.querySelectorAll('.mc').forEach(e=>e.setAttribute('fill',m.c));
+        if(!mk.isConnected) winner.svg.querySelector('.kb-bob').appendChild(mk);
+        wiggle=winner.svg.animate([{transform:'translate(0,0)'},{transform:'translate(3px,-2px)'},{transform:'translate(-2px,2px)'},{transform:'translate(2px,1px)'},{transform:'translate(0,0)'}],{duration:180,iterations:Infinity});
+        drawMark(m);
+        later(next,600);
+      });
+    };
+    next();
   }
 
   // ---- Act 4: the winner punches the letters off the page ----
@@ -882,6 +940,9 @@
     parts.forEach((el,i)=>el.animate(
       [{transform:'none',opacity:1},{transform:`translateY(${innerHeight*1.4}px) rotate(${rand(-28,28)}deg)`,opacity:.4}],
       {duration:1500,delay:i*90+rand(0,200),easing:'cubic-bezier(.55,0,.9,.55)',fill:'forwards'}));
+    graffiti&&graffiti.animate(
+      [{transform:'none',opacity:1},{transform:`translateY(${innerHeight}px) rotate(-5deg)`,opacity:0}],
+      {duration:1600,delay:300,easing:'cubic-bezier(.55,0,.9,.55)',fill:'forwards'});
     cracks&&cracks.animate(
       [{transform:'none',opacity:1},{transform:`translateY(${innerHeight}px) rotate(4deg)`,opacity:0}],
       {duration:1600,delay:500,easing:'cubic-bezier(.55,0,.9,.55)',fill:'forwards'});
@@ -899,6 +960,7 @@
 
   // Put the page back exactly as it was
   function rebuild(){
+    if(graffiti){graffiti.remove(); graffiti=null} // can exist before the page is broken
     if(!broken) return; broken=false;
     [$('header'),$('main'),...($('main')?.children||[]),$('footer')].forEach(el=>el&&el.getAnimations().forEach(a=>a.cancel()));
     saved.forEach(({wrap,n})=>wrap.replaceWith(n)); saved=[]; pool=[];
