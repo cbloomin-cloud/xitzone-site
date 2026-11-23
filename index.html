@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Xitzone website — V.7 -->
-<title>Xitzone | Gym Design + Program Design</title>
-<meta name="description" content="Free 8-week training programs matched to the gym you train in: hybrid, strength, EMOM and Tabata, threshold running, triphasic and tactical. Plus WARP neuro performance coaching and a gym design journal by Caydrick Bloomquist.">
-<meta property="og:title" content="Xitzone | Gym Design + Program Design">
+<!-- Xitzone website — V.8 -->
+<title>Xitzone | Caydrick Bloomquist, Performance Coach</title>
+<meta name="description" content="Performance coach Caydrick Bloomquist. Free 8-week training programs matched to the gym you train in: hybrid, strength, EMOM and Tabata, threshold running, triphasic and tactical. Plus WARP neuro performance coaching and a gym design journal by Caydrick Bloomquist.">
+<meta property="og:title" content="Xitzone | Caydrick Bloomquist, Performance Coach">
 <meta property="og:description" content="Free 8-week programs matched to your gym, plus WARP neuro performance coaching.">
 <meta property="og:image" content="https://www.xitzone.com/images/headband-portrait-bw.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,7 +57,8 @@
   .hero h1 .hl{color:var(--accent)}
   .hero .lead{font-size:clamp(1.05rem,1.8vw,1.25rem);color:#e6e1d8;max-width:560px;margin-bottom:34px}
   .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
-  .hero .byline{margin-top:34px;font-size:.85rem;color:#cfc8bc;letter-spacing:.04em}
+  .hero .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:32px}
+  .hero .tags span{font-size:.78rem;font-weight:600;color:#e6e1d8;border:1px solid rgba(255,255,255,.28);background:rgba(10,10,10,.35);border-radius:999px;padding:6px 12px}
   .ticker{position:absolute;bottom:0;left:0;right:0;z-index:2;border-top:1px solid rgba(255,255,255,.15);background:rgba(10,10,10,.55);backdrop-filter:blur(6px);overflow:hidden}
   .ticker-track{display:flex;gap:44px;padding:15px 0;white-space:nowrap;animation:scroll 32s linear infinite;width:max-content}
   .ticker-track span{font-family:Anton,sans-serif;text-transform:uppercase;letter-spacing:.06em;color:#e6e1d8;font-size:1.05rem}
@@ -152,7 +153,9 @@
   .about .bio p.big{font-size:clamp(1.3rem,2.4vw,1.6rem);color:var(--ink);font-weight:600;line-height:1.35}
   .about .bio em{font-style:normal;color:var(--accent);font-weight:700}
   .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-  .badges span{border:1px solid var(--ink);border-radius:999px;padding:8px 14px;font-size:.84rem;font-weight:700}
+  .badges span{border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:.8rem;font-weight:600;color:var(--ink-2);background:var(--paper)}
+  .badges span.solid{background:var(--ink);border-color:var(--ink);color:var(--bone);font-weight:700}
+  .own{font-size:.82rem;color:var(--muted);margin-top:14px;max-width:560px}
   .text-link{display:inline-flex;gap:8px;font-weight:700;color:var(--accent);margin-top:20px;transition:gap .2s}
   .text-link:hover{gap:12px}
 
@@ -258,6 +261,17 @@
   .kb-end .display{font-size:clamp(2.4rem,7vw,5.5rem);color:var(--ink)}
   .kb-end .display span{color:var(--accent)}
   .kb-end small{display:block;margin-top:14px;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;font-size:.78rem;font-weight:700}
+  /* Act 6: armored trooper, rocket, hole into the code */
+  .kb.kb-trooper{width:150px;height:190px}
+  .kb-bubble{position:fixed;z-index:10001;pointer-events:none;background:#fff;color:#141414;border:3px solid #141414;border-radius:18px;padding:10px 14px;font:700 15px/1.25 Inter,system-ui,sans-serif;max-width:230px;box-shadow:4px 4px 0 #141414;animation:kbPop .25s ease-out}
+  .kb-bubble::after{content:"";position:absolute;bottom:-20px;right:40px;border:10px solid transparent;border-top-color:#141414}
+  @keyframes kbPop{from{transform:scale(.6);opacity:0}to{transform:none;opacity:1}}
+  .kb-rocket{position:fixed;z-index:10000;left:0;top:0;width:36px;height:12px;margin:-6px 0 0 -18px;border-radius:7px 2px 2px 7px;background:#2a2c30;border:2px solid #141414;pointer-events:none}
+  .kb-rocket::after{content:"";position:absolute;right:-20px;top:-4px;width:22px;height:16px;background:radial-gradient(circle at 25% 50%,#fff 0 18%,#ffd84a 38%,#ff3b2f 62%,transparent 66%)}
+  .kb-hole{position:fixed;z-index:9997;pointer-events:none;background:#000}
+  .kb-hole canvas{width:100%;height:100%;display:block}
+  .kb-flash{position:fixed;inset:0;z-index:10002;background:#fff;pointer-events:none;animation:kbFlash .35s ease-out forwards}
+  @keyframes kbFlash{from{opacity:.85}to{opacity:0}}
   @keyframes kbFade{from{opacity:0;transform:translate(-50%,-40%)}to{opacity:1;transform:translate(-50%,-50%)}}
 
 </style>
@@ -283,7 +297,7 @@
   <section class="hero">
     <img class="hero-bg" src="images/headband-portrait-bw.jpg" data-face="0.574,0.236,0.115" alt="Caydrick Bloomquist in a training headband, black and white" width="1600" height="1066">
     <div class="wrap">
-      <div class="eyebrow reveal">Gym Design + Program Design</div>
+      <div class="eyebrow reveal">Caydrick Bloomquist &middot; Performance Coach</div>
       <h1 class="display reveal">Exit the<br><span class="outline">comfort</span> <span class="hl">zone.</span></h1>
       <p class="lead reveal">Free 8-week training programs matched to the gym you actually train in, plus a journal on gym design, trends and what's next in the industry.</p>
       <div class="hero-ctas reveal">
@@ -291,7 +305,7 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a href="#warp" class="btn btn-ghost">Explore WARP</a>
       </div>
-      <div class="byline reveal">Caydrick Bloomquist &middot; lululemon Train Ambassador &middot; Colorado Springs</div>
+      <div class="tags reveal"><span>lululemon Train Ambassador</span><span>Commercial Account Manager &middot; Johnson Commercial Fitness</span><span>Colorado Springs</span></div>
     </div>
     <div class="ticker" aria-hidden="true">
       <div class="ticker-track">
@@ -417,7 +431,7 @@
           <div class="eyebrow">Journal</div>
           <h2 class="display">Gym design,<br>trends + what's next.</h2>
         </div>
-        <p>Notes from designing training spaces for commercial clubs, schools, universities, apartment communities, companies and public-safety teams.</p>
+        <p>Notes from designing training spaces for commercial clubs, schools, universities, apartment communities, companies and public-safety teams. Opinions are my own.</p>
       </div>
       <div class="jgrid">
         <a href="blog/program-the-room.html" class="post reveal">
@@ -458,10 +472,10 @@
     <div class="wrap about-grid">
       <figure class="about-photo reveal">
         <img src="images/headshot-bw.jpg" data-face="0.474,0.393,0.42" alt="Black and white headshot of Caydrick Bloomquist" width="1234" height="1600" loading="lazy">
-        <figcaption class="tag"><strong>Caydrick Bloomquist</strong><span>lululemon Train Ambassador</span></figcaption>
+        <figcaption class="tag"><strong>Caydrick Bloomquist</strong><span>Performance Coach</span></figcaption>
       </figure>
       <div class="reveal">
-        <div class="eyebrow">About</div>
+        <div class="eyebrow">About &middot; Performance Coach</div>
         <h2 class="display">Always studying.<br>Always <span style="color:var(--accent)">chasing.</span></h2>
         <div class="bio">
           <p class="big">I spent years as an athlete chasing performance. Somewhere along the way I realized the real work wasn't just in the training. It was in understanding how we actually perform when it matters.</p>
@@ -470,7 +484,8 @@
           <p>Based in Colorado Springs, I live at the intersection of strength, cognitive science and real-world wellness, working with brands, communities and leaders who want more out of themselves and the people around them.</p>
           <p>If any of that resonates, let's connect. I'm always up for a good conversation about performance, well-being or what's next.</p>
         </div>
-        <div class="badges"><span>lululemon Train Ambassador</span><span>Colorado Springs, CO</span><span>Gym + program design</span></div>
+        <div class="badges"><span class="solid">Performance Coach</span><span>lululemon Train Ambassador</span><span>Commercial Account Manager, Johnson Commercial Fitness</span><span>Colorado Springs, CO</span></div>
+        <p class="own">The brands I represent, from equipment to apparel, are listed above so you know where I stand. Opinions on this site are my own and don't represent Johnson Commercial Fitness, lululemon or any other brand.</p>
         <a href="blog/the-comeback.html" class="text-link">Read my comeback story →</a>
       </div>
     </div>
@@ -516,7 +531,7 @@
     <div class="foot">
       <div>
         <a href="#" class="logo">Xit<span style="color:var(--accent)">zone</span></a>
-        <div>Gym Design + Program Design &middot; Colorado Springs</div>
+        <div>Performance Coach &middot; Colorado Springs</div>
         <div class="social">
           <a href="https://www.instagram.com/caydrick.co/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
           <a href="https://www.linkedin.com/in/caydrick" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.9-1.8-2.9s-2 1.4-2 2.8V21h-4z"/></svg></a>
@@ -532,8 +547,8 @@
       </nav>
     </div>
     <div class="legal">
-      <p>Xitzone LLC provides general fitness education and coaching, not medical advice. Free programs are for healthy adults of all fitness levels; check with a healthcare provider before starting a new program. Individual results vary.</p>
-      <p>© <span id="yr">2026</span> Xitzone LLC. All rights reserved. · V.7</p>
+      <p>Xitzone LLC provides general fitness education and coaching, not medical advice. Free programs are for healthy adults of all fitness levels; check with a healthcare provider before starting a new program. Individual results vary. Opinions are my own and do not represent Johnson Commercial Fitness, lululemon or any other brand.</p>
+      <p>© <span id="yr">2026</span> Xitzone LLC. All rights reserved. · V.8</p>
     </div>
   </div>
 </footer>
@@ -584,6 +599,8 @@
      then a double knockout; one gets up and grabs a sharpie: he vandalizes a photo of a person if one is on screen,
      otherwise he tags the page with random graffiti. Then he
      punches the letters off the page and cracks the screen, until the whole page collapses.
+     5 s later an armored trooper walks in, asks why you're still here, and blasts a hole in the screen
+     with a rocket launcher, exposing falling binary code.
      Any mouse move, scroll, click or key rebuilds everything.
      On phones and tablets the "cursor" is the middle of the screen, and any touch or scroll counts as movement. -->
 <script>
@@ -1055,12 +1072,131 @@
       document.body.appendChild(endMsg);
       setFlip(winner,false);
       move(winner,{x:innerWidth/2-60,y:innerHeight/2+70},700,()=>winner.el.classList.add('cheer'));
+      later(trooperScene,5000); // Act 6
     },1900);
+  }
+
+
+  // ---- Act 6: 5 s after the wreck, an armored trooper walks in, breaks the fourth wall,
+  //      and blasts a hole through the screen into the binary code underneath ----
+  const TROOPER=`<svg viewBox="0 0 150 190"><g class="kb-bob">
+      <g class="kb-leg kb-leg-l"><rect x="52" y="126" width="17" height="46" rx="5" fill="#2b2d31"/><rect x="47" y="166" width="26" height="12" rx="4" fill="#18191b"/></g>
+      <g class="kb-leg kb-leg-r"><rect x="80" y="126" width="17" height="46" rx="5" fill="#34373c"/><rect x="76" y="166" width="26" height="12" rx="4" fill="#18191b"/></g>
+      <rect x="31" y="80" width="13" height="42" rx="6" fill="#2f3237"/>
+      <path d="M44 72q30-13 60 0l4 58H40z" fill="#3a3d43"/>
+      <path d="M51 80h46l-4 27H55z" fill="#2b2d31"/>
+      <rect x="58" y="87" width="32" height="5" rx="2" fill="var(--accent)"/>
+      <rect x="40" y="117" width="68" height="12" rx="4" fill="#232529"/><circle cx="74" cy="123" r="3.5" fill="var(--accent)"/>
+      <ellipse cx="42" cy="77" rx="14" ry="10" fill="#4a4d54"/><ellipse cx="106" cy="77" rx="14" ry="10" fill="#4a4d54"/>
+      <path d="M51 36q23-24 46 0l4 30q-27 12-54 0z" fill="#3f4248"/>
+      <path d="M74 13v20" stroke="#56595f" stroke-width="6" stroke-linecap="round"/>
+      <path d="M55 45h38l-3 15H58z" fill="#0c0c0e"/>
+      <path d="M59 52h30" stroke="#ff3b2f" stroke-width="2.6" stroke-linecap="round"/>
+      <g class="tr-arm"><rect x="100" y="82" width="13" height="38" rx="6" fill="#34373c"/></g>
+      <g class="tr-launcher" style="opacity:0">
+        <rect x="66" y="64" width="80" height="17" rx="5" fill="#2a2c30" stroke="#141414" stroke-width="2"/>
+        <rect x="92" y="64" width="6" height="17" fill="var(--accent)"/><rect x="118" y="64" width="6" height="17" fill="var(--accent)"/>
+        <rect x="140" y="61" width="9" height="23" rx="2" fill="#18191b"/>
+        <rect x="104" y="79" width="7" height="16" rx="2" fill="#18191b"/>
+        <rect x="100" y="82" width="13" height="30" rx="6" fill="#34373c"/>
+      </g></g></svg>`;
+  let trooper=null;
+
+  function say(text,dur,next){
+    if(!trooper) return;
+    const b=document.createElement('div');
+    b.className='kb-bubble'; b.textContent=text;
+    document.body.appendChild(b);
+    const left=Math.max(10,Math.min(innerWidth-b.offsetWidth-10,trooper.x+75-b.offsetWidth+40));
+    b.style.left=left+'px'; b.style.top=Math.max(10,trooper.y-b.offsetHeight-14)+'px';
+    later(()=>{b.remove(); next&&next()},dur);
+  }
+
+  function trooperScene(){
+    if(state!=='end') return;
+    state='trooper';
+    const el=document.createElement('div');
+    el.className='kb kb-trooper on flip'; el.setAttribute('aria-hidden','true');
+    el.innerHTML=`<div class="kb-inner">${TROOPER}</div>`;
+    document.body.appendChild(el);
+    trooper={el,svg:el.querySelector('svg'),x:0,y:0,raf:0,flip:true};
+    const endBottom=endMsg?endMsg.getBoundingClientRect().bottom:innerHeight*.45;
+    const ty=Math.max(90,Math.min(innerHeight-200,Math.max(innerHeight*.5,endBottom+90))), tx=innerWidth-160-(innerWidth>700?50:0); // stand below the end message so the bubble never covers it
+    place(trooper,innerWidth+20,ty);
+    move(trooper,{x:tx,y:ty},1400,()=>
+      say('Why are you still here?',2300,()=>
+        say("The page is gone. The workout's over.",2300,fireRocket)));
+  }
+
+  function fireRocket(){
+    if(!trooper) return;
+    trooper.svg.querySelector('.tr-arm').style.opacity=0;
+    const L=trooper.svg.querySelector('.tr-launcher');
+    L.style.opacity=1;
+    L.animate([{transform:'translateY(14px) rotate(18deg)',opacity:0},{transform:'none',opacity:1}],{duration:450,easing:'ease-out'});
+    later(()=>{
+      const sx=trooper.x+2, sy=trooper.y+73;                     // muzzle (the sprite is mirrored)
+      const hx=innerWidth*.26, hy=Math.min(innerHeight*.74,innerHeight-120);
+      const ang=Math.atan2(hy-sy,hx-sx)*180/Math.PI-180;
+      const r=document.createElement('div'); r.className='kb-rocket';
+      document.body.appendChild(r);
+      r.animate([{transform:`translate(${sx}px,${sy}px) rotate(${ang}deg)`},{transform:`translate(${hx}px,${hy}px) rotate(${ang}deg)`}],{duration:520,easing:'cubic-bezier(.4,0,1,1)',fill:'forwards'});
+      trooper.svg.animate([{transform:'translateX(0)'},{transform:'translateX(-10px)'},{transform:'translateX(0)'}],{duration:300,easing:'ease-out'}); // recoil
+      pow(sx-10,sy,-1,'FWOOSH');
+      later(()=>{r.remove(); explode(hx,hy)},520);
+    },650);
+  }
+
+  function explode(hx,hy){
+    const fl=document.createElement('div'); fl.className='kb-flash'; document.body.appendChild(fl);
+    fl.addEventListener('animationend',()=>fl.remove());
+    pow(hx,hy,0,'KA-BOOM!',true); shake(22);
+    const R=Math.min(innerWidth,innerHeight)*.23;
+    const pts=[]; for(let i=0;i<22;i++){const a=i/22*Math.PI*2, rr=R*rand(.78,1); pts.push([R+Math.cos(a)*rr,R+Math.sin(a)*rr])}
+    const hole=document.createElement('div'); hole.className='kb-hole';
+    Object.assign(hole.style,{left:hx-R+'px',top:hy-R+'px',width:2*R+'px',height:2*R+'px',
+      clipPath:`polygon(${pts.map(([x,y])=>`${x.toFixed(1)}px ${y.toFixed(1)}px`).join(',')})`});
+    const cv=document.createElement('canvas'); hole.appendChild(cv); document.body.appendChild(hole);
+    hole.animate([{transform:'scale(.15)'},{transform:'scale(1.06)',offset:.7},{transform:'scale(1)'}],{duration:450,easing:'ease-out'});
+    binaryRain(cv,2*R);
+    if(cracks){cracks.remove(); cracks=null} // old cracks fell away with the page; start a fresh layer
+    crack(hx,hy,R*2.3,16);
+    const edge=document.createElementNS(NS,'path');
+    edge.setAttribute('d','M'+pts.map(([x,y])=>`${(x+hx-R).toFixed(1)} ${(y+hy-R).toFixed(1)}`).join('L')+'Z');
+    edge.setAttribute('fill','none'); edge.setAttribute('stroke','#141414'); edge.setAttribute('stroke-width','6');
+    cracks.appendChild(edge);
+    later(()=>say('There. Now go train.',3000),1300);
+  }
+
+  // Falling 1s and 0s
+  function binaryRain(cv,size){
+    const dpr=Math.min(2,devicePixelRatio||1); cv.width=size*dpr; cv.height=size*dpr;
+    const ctx=cv.getContext('2d'); ctx.scale(dpr,dpr);
+    const fs=15, cols=Math.ceil(size/fs), drops=Array.from({length:cols},()=>rand(-25,0));
+    ctx.fillStyle='#000'; ctx.fillRect(0,0,size,size);
+    let last=0;
+    const tick=t=>{
+      if(!cv.isConnected) return;
+      if(t-last>55){
+        last=t;
+        ctx.fillStyle='rgba(0,0,0,.16)'; ctx.fillRect(0,0,size,size);
+        ctx.font=`700 ${fs}px ui-monospace,SFMono-Regular,Menlo,monospace`;
+        drops.forEach((d,i)=>{
+          ctx.fillStyle=Math.random()<.06?'#e6ffe9':'#3cff6b';
+          ctx.fillText(Math.random()<.5?'0':'1',i*fs,d*fs);
+          drops[i]=(d*fs>size&&Math.random()>.94)?0:d+1;
+        });
+      }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
   }
 
   // Put the page back exactly as it was
   function rebuild(){
     if(graffiti){graffiti.remove(); graffiti=null} // can exist before the page is broken
+    if(trooper){cancelAnimationFrame(trooper.raf); trooper=null}
+    document.querySelectorAll('.kb-trooper,.kb-bubble,.kb-rocket,.kb-hole,.kb-flash').forEach(e=>e.remove());
     if(!broken) return; broken=false;
     [$('header'),$('main'),...($('main')?.children||[]),$('footer')].forEach(el=>el&&el.getAnimations().forEach(a=>a.cancel()));
     saved.forEach(({wrap,n})=>wrap.replaceWith(n)); saved=[]; pool=[];
